@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 // import isEmpty from "is-empty";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import login from "../requests/login";
 import "./Login.css";
 
 const LoginView = props => {
@@ -12,9 +13,10 @@ const LoginView = props => {
     password: ""
   });
 
-  const loginUser = event => {
+  const loginUser = async event => {
     event.preventDefault();
-    props.loginUser(state);
+    let response = await login(state);
+    console.log(response);
   };
 
   const handleChange = event => {

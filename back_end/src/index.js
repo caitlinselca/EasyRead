@@ -1,6 +1,7 @@
 require('dotenv/config');
 const express = require('express');
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Routes
 const userRoute = require('./routes/user');
@@ -19,6 +20,7 @@ mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
 
 // Body parser
 app.use(express.json());
+app.use(cors());
 
 app.use('/user', userRoute);
  

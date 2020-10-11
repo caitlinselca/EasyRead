@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', verifyUser, (req, res) => {
     const user = {username: req.body.username};
     const accessToken = createAccessToken(user);
-    res.json({accessToken: accessToken, refreshToken: refreshToken});
+    res.json({accessToken: accessToken});
 });
 
 async function verifyUser(req, res, next){
@@ -41,8 +41,7 @@ async function verifyUser(req, res, next){
 
     const result = await bcrypt.compare(req.body.password, user.password);
     if(result) next();
-
-    return res.status(400).send('Wrong username or password.');
+    else return res.status(400).send('Wrong username or password.');
 }
 
 function createAccessToken(user){
