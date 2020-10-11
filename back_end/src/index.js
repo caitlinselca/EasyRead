@@ -1,22 +1,26 @@
-require("dotenv/config");
-
+require('dotenv/config');
 const express = require('express');
- 
-const app = express();
-
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      }, () => {
-        console.log("connected to db");
-      }
-    );
+// Routes
+const userRoute = require('./routes/user');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-  });
+const app = express();
+
+// Connect to DB
+mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  }, () => {
+    console.log("Connected to db");
+  }
+);
+
+// Body parser
+app.use(express.json());
+
+app.use('/user', userRoute);
  
 app.listen(3001, () =>
   console.log('Example app listening on port 3001!'),

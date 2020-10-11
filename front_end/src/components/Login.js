@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 // import isEmpty from "is-empty";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Login.css";
 
@@ -122,10 +122,9 @@ const LoginView = props => {
           type="submit"
           variant="contained"
             //color="red"
+          href="/register"
           >
-          {/* <Link to="/register"> */}
             Sign Up
-            {/* </Link> */}
           </Button>
         </div>
       </form>
