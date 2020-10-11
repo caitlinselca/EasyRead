@@ -32,7 +32,6 @@ router.post('/register', async (req, res) => {
 router.post('/login', verifyUser, (req, res) => {
     const user = {username: req.body.username};
     const accessToken = createAccessToken(user);
-    const refreshToken = createRefreshToken(user);
     res.json({accessToken: accessToken, refreshToken: refreshToken});
 });
 
