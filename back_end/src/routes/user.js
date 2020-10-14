@@ -2,9 +2,9 @@ require('dotenv/config');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
 const router = express.Router();
 const User = require('../models/User');
+
 
 // Register
 router.post('/register', async (req, res) => {
@@ -29,23 +29,23 @@ router.post('/register', async (req, res) => {
 });
 
 // Login
-router.post('/login', verifyUser, (req, res) => {
+router.post('/login', verifyUser, (req, res) => { 
     const user = {username: req.body.username};
-    const accessToken = createAccessToken(user);
-    res.json({accessToken: accessToken});
+    const accessToken = createAccessToken(user); 
+    res.json({accessToken: accessToken}); 
 });
 
-async function verifyUser(req, res, next){
+async function verifyUser(req, res, next){ 
     const user = await User.findOne({username: req.body.username});
     if(user == null) return res.status(400).send('Wrong username or password.');
 
-    const result = await bcrypt.compare(req.body.password, user.password);
-    if(result) next();
-    else return res.status(400).send('Wrong username or password.');
+    const result = await bcrypt.compare(req.body.password, user.password); 
+    if(result) next(); 
+    else return res.status(400).send('Wrong username or password.'); 
 }
 
 function createAccessToken(user){
-    return jwt.sign(user, process.env.ACCESS_SECRET_TOKEN, { expiresIn: '30s'});
+    return jwt.sign(user, process.env.ACCESS_SECRET_TOKEN, { expiresIn: '30s'}); 
 }
 
 function authenticateAccessToken(req, res, next){

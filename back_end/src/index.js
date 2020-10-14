@@ -22,7 +22,8 @@ mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
 app.use(express.json());
 app.use(cors());
 
-app.use('/user', userRoute);
+// Whenever REST api is called, '/user' refers to userRoute, look it up later !!! only change to this file besides line 4
+app.use('/user', userRoute); 
  
 app.listen(3001, () =>
   console.log('Example app listening on port 3001!'),

@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import login from "../requests/login";
 import "./Login.css";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const LoginView = props => {
   const [state, setState] = useState({
@@ -15,8 +18,8 @@ const LoginView = props => {
 
   const loginUser = async event => {
     event.preventDefault();
-    let response = await login(state);
-    console.log(response);
+    let response = await login(state); 
+    cookies.set('accessToken', response.accessToken, { path: '/' });
   };
 
   const handleChange = event => {
