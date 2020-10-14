@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 // import isEmpty from "is-empty";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import login from "../requests/login";
 import "./Login.css";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const LoginView = props => {
   const [state, setState] = useState({
@@ -12,9 +16,10 @@ const LoginView = props => {
     password: ""
   });
 
-  const loginUser = event => {
+  const loginUser = async event => {
     event.preventDefault();
-    props.loginUser(state);
+    let response = await login(state); 
+    cookies.set('accessToken', response.accessToken, { path: '/' });
   };
 
   const handleChange = event => {
@@ -122,10 +127,9 @@ const LoginView = props => {
           type="submit"
           variant="contained"
             //color="red"
+          href="/register"
           >
-          {/* <Link to="/register"> */}
             Sign Up
-            {/* </Link> */}
           </Button>
         </div>
       </form>
