@@ -2,15 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Login from './components/Login'
-import Register from './components/Register'
+import Login from './components/Login';
+import Register from './components/Register';
+import HomePage from './homepage/HomePage';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/register" component={Register} />
-        <Route path="/" component={Login} />
+        <Route path="/login" component={Login} />
+        <Route path="/" component={HomePage} />
       </Switch>
     </Router>
     // <div className="App">

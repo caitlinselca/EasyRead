@@ -1,0 +1,62 @@
+.Login {
+    height: 1000px;
+    background-image: url(./books.jpg);
+  }
+    
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+  
+  .EasyReadTitle{
+    color: white;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 75px;
+    font-weight: 900;
+    padding-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .EasyReadIntro{
+    color: white;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 2.5%;
+  }
+  
+  .EasyReadLoginTitle{
+    margin-left: 3%;
+    margin-bottom: 2.5%;
+  }
+  
+  .EasyReadRegisterTitle{
+    margin-left: 13%;
+    margin-bottom: 3%;
+  }
+  
+  .LoginContainer{
+    margin-top: 2%;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin: auto;
+  }
