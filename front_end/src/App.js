@@ -5,16 +5,20 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './homepage/HomePage';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
+  <div className="App">
     <Router>
       <Switch>
+        <Route path="/welcome" component={Welcome} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/" component={HomePage} />
       </Switch>
     </Router>
+  </div>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />

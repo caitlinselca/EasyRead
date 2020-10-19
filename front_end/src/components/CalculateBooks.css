@@ -4,7 +4,7 @@
 }
 
 .spinninggear{
-  background-image: url(./Spinner-1s-200px-2.gif);
+  background-image: url(../static/Spinner-1s-200px-2.gif);
   width: 200px;
   height: 200px;
   margin-left: auto;
