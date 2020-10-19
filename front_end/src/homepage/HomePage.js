@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./HomePage.css";
 import Cookies from 'universal-cookie';
 import homepage from '../requests/homepage';
+import NavigationBar from '../components/NavigationBar'
 
 const cookies = new Cookies();
 
@@ -28,7 +29,7 @@ const HomePage = props => {
 
   return (
     <div className="HomePage">
-      
+    <NavigationBar />
     </div>
   );
 };

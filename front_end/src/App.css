@@ -1,6 +1,6 @@
 .App {
   height: 1000px;
-  background-image: url(./static/books.jpg);
+  background-color: url(./static/books.jpg);
 }
 /* 
 .App-logo {
