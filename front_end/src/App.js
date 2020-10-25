@@ -2,10 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import HomePage from './homepage/HomePage';
-import Welcome from './components/Welcome';
+import Login from './views/Login';
+import Register from './views/Register';
+import HomePage from './views/HomePage';
+import Welcome from './views/Welcome';
 
 function App() {
   return (

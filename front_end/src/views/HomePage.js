@@ -5,6 +5,8 @@ import "./HomePage.css";
 import Cookies from 'universal-cookie';
 import homepage from '../requests/homepage';
 import NavigationBar from '../components/NavigationBar'
+import BookGridList from '../components/BookGridList'
+import Container from '@material-ui/core/Container'
 
 const cookies = new Cookies();
 
@@ -29,7 +31,10 @@ const HomePage = props => {
 
   return (
     <div className="HomePage">
-    <NavigationBar />
+      <NavigationBar />
+      <Container maxWidth="md">
+        <BookGridList />
+      </Container>
     </div>
   );
 };
