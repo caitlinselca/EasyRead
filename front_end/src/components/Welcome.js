@@ -37,8 +37,8 @@ const WelcomeView = props => {
                 <br></br>
                 <br></br>
                 <Router>
-                <Button className={classes.button} type="submit" variant="contained">
-                <Link onclick to={'/CalculateBooks'}>Let's try This</Link>
+                <Button className={classes.button} type="submit" variant="contained" href="/genres">
+                    Let's Try This!
                 </Button>
                 </Router>
                 <br></br>

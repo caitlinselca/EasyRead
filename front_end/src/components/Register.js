@@ -116,6 +116,7 @@ const RegisterView = props => {
             type="submit"
             variant="contained"
             //color="primary"
+            href="/welcome"
           >
             Sign Up
           </Button>
