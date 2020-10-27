@@ -1,0 +1,68 @@
+.Register {
+    height: 1000px;
+    background-image: url(./books.jpg);
+  }
+  
+  .Register form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+  
+  .EasyReadTitle{
+    color: white;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 75px;
+    font-weight: 900;
+    padding-top: 2%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .EasyReadRegisterTitle{
+    margin-bottom: 4%;
+    text-shadow: 1.5px 1.5px 1.5px gray;
+  }
+  
+  .RegisterContainer{
+    background-color: white;
+    height: 550px;
+    width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin: auto;
+  }
+  
+  .LoginRoute{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+
+  .ButtonAlignment{
+    flex-direction: row;
+    align-items: left;
+    margin-left: -50%;
+    margin-right: -70%;
+  }
+
+  .Button{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 20px;
+  }
+
+  .EndButton{
+    margin-top: 15%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }

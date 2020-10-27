@@ -4,11 +4,19 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/Login'
 import Register from './components/Register'
+import WelcomeView from './components/Welcome'
+import Genres from './components/Genres'
+import Subjects from './components/Subjects'
+import CalculateBooks from './components/CalculateBooks'
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/calculatebooks" component={CalculateBooks} />
+        <Route path="/subjects" component={Subjects} />
+        <Route path="/genres" component={Genres} />
+        <Route path="/welcome" component={WelcomeView} />
         <Route path="/register" component={Register} />
         <Route path="/" component={Login} />
       </Switch>

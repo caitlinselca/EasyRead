@@ -15,7 +15,8 @@ const CalculateBooksView = props => {
         <br></br><br></br>
         <h1>If you’ve made an error or would like different suggestions, we recommend selecting your preferences again.</h1>
         <br></br>
-          <div className="spinninggear"></div>
+
+            <img className="spinninggear" src= {require("./Spinner-1s-200px-2.gif")}></img>
         <br></br>
         <br></br>
         </p>
