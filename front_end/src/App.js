@@ -2,12 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Login from './components/Login'
-import Register from './components/Register'
-import WelcomeView from './components/Welcome'
+import Login from './views/Login'
+import Register from './views/Register'
+import WelcomeView from './views/Welcome'
 import Genres from './components/Genres'
 import Subjects from './components/Subjects'
-import CalculateBooks from './components/CalculateBooks'
+import CalculateBooks from './views/CalculateBooks'
+import HomePage from './views/HomePage'
 
 function App() {
   return (
