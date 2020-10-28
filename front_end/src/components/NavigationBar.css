@@ -1,0 +1,11 @@
+.MuiAppBar-colorPrimary {
+    color: #fff;
+    background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url(../static/seamless-wood-background.jpg);
+}
+
+.BooksIcon{
+    width: 45%;
+    height: 45%;
+}
