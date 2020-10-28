@@ -30,7 +30,15 @@ const RegisterView = props => {
     textField: {
       //width: "100%"
     },
-    button: {
+    unselectedButton: {
+      color: "#fff",
+      background: "#3f51b5",
+      width: "30%",
+      marginTop: "2%"
+    },
+    selectedButton: {
+      color: "#fff",
+      background: "#2f3d87",
       width: "30%",
       marginTop: "2%"
     },
@@ -40,6 +48,23 @@ const RegisterView = props => {
   }));
 
   const classes = useStyles();
+
+
+  const [horrorStatus, setHorrorStatus] = useState(false);
+  const [thrillerStatus, setThrillerStatus] = useState(false);
+  const [romanceStatus, setRomanceStatus] = useState(false);
+  const [dramaStatus, setDramaStatus] = useState(false);
+  const [actionStatus, setActionStatus] = useState(false);
+  const [fantasyStatus, setFantasyStatus] = useState(false);
+  const [comedyStatus, setComedyStatus] = useState(false);
+  const [mysteryStatus, setMysteryStatus] = useState(false);
+  const [sciFiStatus, setSciFiStatus] = useState(false);
+  const [fictionStatus, setFictionStatus] = useState(false);
+  const [nonFictionStatus, setNonFictionStatus] = useState(false);
+  const [educationalStatus, setEducationalStatus] = useState(false);
+  const [crimeStatus, setCrimeStatus] = useState(false);
+  const [youngAdultStatus, setYoungAdultStatus] = useState(false);
+  const [childrensBooksStatus, setChildrensBooksStatus] = useState(false);
 
   return (
     <div className = "Register">
@@ -57,19 +82,21 @@ const RegisterView = props => {
       </div>
         <br></br>
         <div className = "ButtonAlignment">
-          <Button
-            className={classes.button}
-            type="submit"
+          <Button 
+            onClick={() => setHorrorStatus(!horrorStatus)}
+            className= {horrorStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
-            color="primary"
+            color="primary" 
           >
             Horror
           </Button> {' '}
         {/* </div>
         <div className = "Button"> */}
           <Button
-            className={classes.button}
-            type="submit"
+            onClick={() => setThrillerStatus(!thrillerStatus)}
+            className= {thrillerStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
@@ -78,8 +105,9 @@ const RegisterView = props => {
         {/* </div> */}
         {/* <div className = "Button"> */}
           <Button
-            className={classes.button}
-            type="submit"
+           onClick={() => setRomanceStatus(!romanceStatus)}
+           className= {romanceStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
@@ -88,24 +116,27 @@ const RegisterView = props => {
         </div>
         <div className = "ButtonAlignment">
           <Button
-            className={classes.button}
-            type="submit"
+            onClick={() => setDramaStatus(!dramaStatus)}
+            className= {dramaStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
             Drama
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+            onClick={() => setActionStatus(!actionStatus)}
+            className= {actionStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
             Action
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setFantasyStatus(!fantasyStatus)}
+             className= {fantasyStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
@@ -113,15 +144,17 @@ const RegisterView = props => {
           </Button>
         <div className = "Button">
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setComedyStatus(!comedyStatus)}
+             className= {comedyStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
             Comedy
           </Button> {' '}
           <Button
-            className={classes.button}
+            onClick={() => setMysteryStatus(!mysteryStatus)}
+            className= {mysteryStatus ? classes.selectedButton : classes.unselectedButton }
             type="submit"
             variant="contained"
             color="primary"
@@ -129,56 +162,63 @@ const RegisterView = props => {
             Mystery
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setSciFiStatus(!sciFiStatus)}
+             className= {sciFiStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
             color="primary"
           >
             Sci-Fi
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setFictionStatus(!fictionStatus)}
+             className= {fictionStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
             color="primary"
           >
             Fiction
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setNonFictionStatus(!nonFictionStatus)}
+             className= {nonFictionStatus ? classes.selectedButton : classes.unselectedButton }
+          //  type="submit"
             variant="contained"
             color="primary"
           >
             Non-Fiction
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setEducationalStatus(!educationalStatus)}
+             className= {educationalStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
             color="primary"
           >
             Educational
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setCrimeStatus(!crimeStatus)}
+             className= {crimeStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
             color="primary"
           >
             Crime
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setYoungAdultStatus(!youngAdultStatus)}
+             className= {youngAdultStatus ? classes.selectedButton : classes.unselectedButton }
+           // type="submit"
             variant="contained"
             color="primary"
           >
             Young Adult
           </Button> {' '}
           <Button
-            className={classes.button}
-            type="submit"
+             onClick={() => setChildrensBooksStatus(!childrensBooksStatus)}
+             className= {childrensBooksStatus ? classes.selectedButton : classes.unselectedButton }
+            // type="submit"
             variant="contained"
             color="primary"
           >
@@ -189,7 +229,7 @@ const RegisterView = props => {
         <div className = "EndButton">
           <Button
             className={classes.button2}
-            type="submit"
+            // type="submit"
             variant="contained"
             //color="primary"
             href="/subjects"
