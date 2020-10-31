@@ -6,24 +6,27 @@ import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
 import { fontFamily } from "@material-ui/system";
+import genres from "../static/genres";
+import getBooks from "../requests/genrespage"
 
-const RegisterView = props => {
-  const [state, setState] = useState({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: ""
-  });
+const GenresView = props => {
+  const [selectedGenres, setGenres] = useState([]);
 
   const history = useHistory();
 
-  const registerUser = event => {
+  const submitGenre = async event => {
     event.preventDefault();
-    props.registerUser(state, history);
+    let response = await getBooks(selectedGenres);
+    console.log(response);
   };
 
   const handleChange = event => {
-    setState({ ...state, [event.target.id]: event.target.value });
+    let genre = event.currentTarget.value;
+    let current = selectedGenres;
+    let index = current.indexOf(genre);
+    if(index > -1) current.splice(index, 1);
+    else current.push(genre);
+    setGenres(current);
   };
 
   const useStyles = makeStyles(theme => ({
@@ -49,7 +52,7 @@ const RegisterView = props => {
         </label> */}
       </div>
     <div className = "RegisterContainer">
-      <form onSubmit={registerUser} autoComplete="off">
+      <form onSubmit={submitGenre} autoComplete="off">
       <div className = "EasyReadRegisterTitle">
       <label>
           Select Your Favorite Genres!
@@ -57,134 +60,20 @@ const RegisterView = props => {
       </div>
         <br></br>
         <div className = "ButtonAlignment">
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Horror
-          </Button> {' '}
-        {/* </div>
-        <div className = "Button"> */}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Thriller
-          </Button> {' '}
-        {/* </div> */}
-        {/* <div className = "Button"> */}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Romance
-          </Button> {' '}
-        </div>
-        <div className = "ButtonAlignment">
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Drama
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Action
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Fantasy
-          </Button>
-        <div className = "Button">
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Comedy
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Mystery
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Sci-Fi
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Fiction
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Non-Fiction
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Educational
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Crime
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Young Adult
-          </Button> {' '}
-          <Button
-            className={classes.button}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Children's Books
-          </Button> {' '}
-        </div>
+          {genres.map((genre) => (
+            <span>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              value={genre}
+              onClick={handleChange}
+            >
+              {genre}
+            </Button>{' '}
+          </span>
+          // <div className = "Button">
+          ))}
         </div>
         <div className = "EndButton">
           <Button
@@ -192,7 +81,7 @@ const RegisterView = props => {
             type="submit"
             variant="contained"
             //color="primary"
-            href="/subjects"
+            // href="/subjects"
           >
             Next Page
           </Button>
@@ -203,4 +92,4 @@ const RegisterView = props => {
   );
 };
 
-export default RegisterView;
+export default GenresView;
