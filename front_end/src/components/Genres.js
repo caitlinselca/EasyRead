@@ -10,7 +10,8 @@ import genres from "../static/genres";
 import getBooks from "../requests/genrespage"
 
 const GenresView = props => {
-  const [selectedGenres, setGenres] = useState([]);
+  const [selectedGenres, setGenres] = useState(new Map());
+  genres.map(genre => selectedGenres.set(genre, false));
 
   const history = useHistory();
 
@@ -19,19 +20,6 @@ const GenresView = props => {
     let response = await getBooks(selectedGenres);
     console.log(response);
   };
-
-  const handleChange = event => {
-    let genre = event.currentTarget.value;
-    let current = selectedGenres;
-    let index = current.indexOf(genre);
-    if(index > -1) current.splice(index, 1);
-    else current.push(genre);
-    setGenres(current);
-  };
-
-  const isSelected = event => {
-    return selectedGenres.indexOf(event.currentTarget.value) > -1;
-  }
 
   const useStyles = makeStyles(theme => ({
     textField: {
@@ -56,6 +44,14 @@ const GenresView = props => {
 
   const classes = useStyles();
 
+  const handleChange = event => {
+    let genre = event.currentTarget.value;
+    let selected = selectedGenres.get(genre);
+    setGenres(selectedGenres.set(genre, !selected));
+    let newStyles = !selected ? classes.selectedButton : classes.unselectedButton;
+    event.currentTarget.className = `MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary ${newStyles}`;
+  };
+
   return (
     <div className = "Register">
             <div className="EasyReadTitle">
@@ -75,11 +71,11 @@ const GenresView = props => {
           {genres.map((genre) => (
             <span>
             <Button
-              className={isSelected ? classes.unselectedButton : classes.selectedButton}
+              onClick={handleChange}
+              className={classes.unselectedButton}
               variant="contained"
               color="primary"
               value={genre}
-              onClick={handleChange}
             >
               {genre}
             </Button>{' '}
