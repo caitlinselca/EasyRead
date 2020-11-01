@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
 import { fontFamily } from "@material-ui/system";
+const fetch = require('node-fetch');
 
 const RegisterView = props => {
   const [state, setState] = useState({
