@@ -29,11 +29,23 @@ const GenresView = props => {
     setGenres(current);
   };
 
+  const isSelected = event => {
+    return selectedGenres.indexOf(event.currentTarget.value) > -1;
+  }
+
   const useStyles = makeStyles(theme => ({
     textField: {
       //width: "100%"
     },
-    button: {
+    unselectedButton: {
+      color: "#fff",
+      background: "#3f51b5",
+      width: "30%",
+      marginTop: "2%"
+    },
+    selectedButton: {
+      color: "#fff",
+      background: "#2f3d87",
       width: "30%",
       marginTop: "2%"
     },
@@ -63,7 +75,7 @@ const GenresView = props => {
           {genres.map((genre) => (
             <span>
             <Button
-              className={classes.button}
+              className={isSelected ? classes.unselectedButton : classes.selectedButton}
               variant="contained"
               color="primary"
               value={genre}
