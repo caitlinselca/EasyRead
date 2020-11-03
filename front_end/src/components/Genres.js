@@ -17,7 +17,18 @@ const GenresView = props => {
 
   const submitGenre = async event => {
     event.preventDefault();
-    let response = await getBooks(selectedGenres);
+
+    let trueGenres = []; 
+
+    for (const [key, value] of selectedGenres.entries())
+    {
+      if (value)
+      {
+        trueGenres.push(key); 
+      }
+    }
+
+    let response = await getBooks(trueGenres);
     console.log(response);
   };
 

@@ -26,7 +26,7 @@ app.use(cors());
 
 // Whenever REST api is called, '/user' refers to userRoute, look it up later !!! only change to this file besides line 4
 app.use('/user', userRoute);
-app.use('/openlibrary',openLibrary);
+app.use('/openlibrary', openLibrary);
 app.use('/testgoodreads', testingGoodReads);
  
 app.listen(3001, () =>

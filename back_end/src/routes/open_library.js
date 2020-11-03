@@ -13,7 +13,16 @@ router.get('/', (req, res) => {
 });
 
 router.post('/genres', (req, res) => {
-    res.json(req.body);
+    let genre = req.body.trueGenres[0].toLowerCase();
+    fetch(`http://openlibrary.org/subjects/${genre}.json?limit=100`)
+        .then(response => response.json())
+        .then(data => {
+            res.json({
+                selectedGenres: req.body.trueGenres,
+                books: data
+            });
+        })
+        .catch(err => res.json(err));
 })
 
 module.exports = router;
