@@ -5,7 +5,7 @@ const cors = require('cors');
 
 // Routes
 const userRoute = require('./routes/user');
-const testingOpenLibrary = require('./routes/open_library_test');
+const openLibrary = require('./routes/open_library');
 const testingGoodReads = require('./routes/good_reads_test');
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(cors());
 
 // Whenever REST api is called, '/user' refers to userRoute, look it up later !!! only change to this file besides line 4
 app.use('/user', userRoute);
-app.use('/testopenlibrary', testingOpenLibrary);
+app.use('/openlibrary', openLibrary);
 app.use('/testgoodreads', testingGoodReads);
  
 app.listen(3001, () =>
