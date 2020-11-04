@@ -100,7 +100,7 @@ const GenresView = props => {
             type="submit"
             variant="contained"
             //color="primary"
-            // href="/subjects"
+            href="/subjects"
           >
             Next Page
           </Button>
