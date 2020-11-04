@@ -8,7 +8,7 @@ const BookGridList = props => {
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
-            backgroundColor: 'grey'
+            backgroundColor: 'burlywood'
         },
         gridList: {
             width: '80%'
