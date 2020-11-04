@@ -7,15 +7,23 @@ import getBooks from '../requests/homepage';
 import NavigationBar from '../components/NavigationBar'
 import BookGridList from '../components/BookGridList'
 import Container from '@material-ui/core/Container'
-import genres from "../static/genres";
 
 const cookies = new Cookies();
 
 const HomePage = props => {
+  const [popularBooks, setBooks] = useState([]);
 
   useEffect(async() => {
     let response = await getBooks();
-    console.log(response);
+    let books = response.map(book => ({
+      title: book.title,
+      author: book.authors[0].name,
+      cover: book.cover_id
+    }));
+    console.log(books);
+    //author: authors -> name
+    //title: title
+    //cover: cover_id
   });
 
   const useStyles = makeStyles(theme => ({
@@ -39,7 +47,7 @@ const HomePage = props => {
     <div className="HomePage">
       <NavigationBar />
       <Container maxWidth="md">
-        <BookGridList />
+        <BookGridList/>
       </Container>
     </div>
   );

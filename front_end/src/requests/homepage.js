@@ -5,10 +5,11 @@ export default async function getBooks(){
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                 trueGenres: ['history']
+                 trueGenres: ['history'],
+                 amount: 10
             }
         );
-        return response.data;
+        return response.data.books.works;
     }catch(err){
         return err;
     }

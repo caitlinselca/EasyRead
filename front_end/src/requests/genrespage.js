@@ -5,7 +5,8 @@ export default async function getBooks(data){
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                 trueGenres: data
+                 trueGenres: data,
+                 amount: 100
             }
         );
         return response.data;

@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.post('/genres', (req, res) => {
     let genre = req.body.trueGenres[0].toLowerCase();
-    fetch(`http://openlibrary.org/subjects/${genre}.json?limit=100`)
+    fetch(`http://openlibrary.org/subjects/${genre}.json?limit=${req.body.amount}`)
         .then(response => response.json())
         .then(data => {
             res.json({
