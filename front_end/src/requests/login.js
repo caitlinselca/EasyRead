@@ -9,8 +9,8 @@ export default async function login(user){
                 password: user.password
             }
         );
-        return response.data;
+        return response;
     }catch(err){
-        return err;
+        if(err.response) return err.response;
     }
 }

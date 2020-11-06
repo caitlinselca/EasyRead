@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-// import isEmpty from "is-empty";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
 import { fontFamily } from "@material-ui/system";
 import genres from "../static/genres";
-import getBooks from "../requests/genrespage"
+import { getBooks, saveGenres } from "../requests/genrespage"
 
 const GenresView = props => {
   const [selectedGenres, setGenres] = useState(new Map());
@@ -20,22 +18,15 @@ const GenresView = props => {
 
     let trueGenres = []; 
 
-    for (const [key, value] of selectedGenres.entries())
-    {
-      if (value)
-      {
-        trueGenres.push(key); 
-      }
+    for (const [key, value] of selectedGenres.entries()) {
+      if (value) trueGenres.push(key);
     }
 
-    let response = await getBooks(trueGenres);
-    console.log(response);
+    let response = await saveGenres(trueGenres);
+    console.log(response.data);
   };
 
   const useStyles = makeStyles(theme => ({
-    textField: {
-      //width: "100%"
-    },
     unselectedButton: {
       color: "#fff",
       background: "#3f51b5",
@@ -65,11 +56,8 @@ const GenresView = props => {
 
   return (
     <div className = "Register">
-            <div className="EasyReadTitle">
-        {/* <label>
-            Easy Read
-        </label> */}
-      </div>
+        <div className="EasyReadTitle">
+        </div>
     <div className = "RegisterContainer">
       <form onSubmit={submitGenre} autoComplete="off">
       <div className = "EasyReadRegisterTitle">
@@ -91,7 +79,6 @@ const GenresView = props => {
               {genre}
             </Button>{' '}
           </span>
-          // <div className = "Button">
           ))}
         </div>
         <div className = "EndButton">
@@ -99,8 +86,7 @@ const GenresView = props => {
             className={classes.button2}
             type="submit"
             variant="contained"
-            //color="primary"
-            href="/subjects"
+            // href="/subjects"
           >
             Next Page
           </Button>

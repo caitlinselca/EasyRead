@@ -20,6 +20,7 @@ const RegisterView = props => {
   const registerUser = async event => {
     event.preventDefault();
     let response = await register(state);
+    if(response.status == 201) history.push('/login');
     console.log(response);
   };
 
@@ -115,15 +116,13 @@ const RegisterView = props => {
             className={classes.button}
             type="submit"
             variant="contained"
-            //color="primary"
-            href="/welcome"
           >
             Sign Up
           </Button>
         </div>
         <br></br>
         <div className = "LoginRoute">
-          <Link to="/">Want to login instead?</Link>
+          <Link to="/login">Want to login instead?</Link>
         </div>
       </form>
       </div>
