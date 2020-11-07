@@ -30,6 +30,10 @@ router.post('/login', verifyUser, (req, res) => {
     return res.status(200).json({accessToken: accessToken}); 
 });
 
+router.get('/islogin', authenticateAccessToken, (req, res) => {
+    return res.sendStatus(200);
+})
+
 // Saving genres
 router.post('/savegenres', authenticateAccessToken, async (req, res) => {
     try{

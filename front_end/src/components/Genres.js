@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
 import { fontFamily } from "@material-ui/system";
 import genres from "../static/genres";
-import { getBooks, saveGenres } from "../requests/genrespage"
+import { getBooks, saveGenres } from "../utils/genrespage";
 
 const GenresView = props => {
   const [selectedGenres, setGenres] = useState(new Map());
@@ -16,7 +16,7 @@ const GenresView = props => {
   const submitGenre = async event => {
     event.preventDefault();
 
-    let trueGenres = []; 
+    let trueGenres = [];
 
     for (const [key, value] of selectedGenres.entries()) {
       if (value) trueGenres.push(key);
