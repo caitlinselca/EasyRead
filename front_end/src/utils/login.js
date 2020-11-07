@@ -21,7 +21,7 @@ async function login(user){
 async function isLogin(){
     if(cookies.get('accessToken') == null) return false;
     try{
-        await axios.get(
+        const response = await axios.get(
             'http://localhost:3001/user/islogin',
             {
                 headers: {
@@ -29,9 +29,9 @@ async function isLogin(){
                 }
             }
         );
-        return true;
+        return response;
     }catch(err){
-        return false;
+        return err.response;
     }
 }
 

@@ -30,8 +30,10 @@ router.post('/login', verifyUser, (req, res) => {
     return res.status(200).json({accessToken: accessToken}); 
 });
 
+// Checks whether user is logged in and if user is new
 router.get('/islogin', authenticateAccessToken, (req, res) => {
-    return res.sendStatus(200);
+    if(req.user.genres.length == 0) return res.status(200).send('new');
+    else return res.status(200).send('old');
 })
 
 // Saving genres
@@ -71,7 +73,7 @@ function authenticateAccessToken(req, res, next){
         const usernameExist = await User.findOne({username: user.username});
         if(usernameExist == null) return res.sendStatus(400);
 
-        else req.user = user;
+        else req.user = usernameExist;
         return next();
     });
 }

@@ -22,8 +22,9 @@ const GenresView = props => {
       if (value) trueGenres.push(key);
     }
 
-    let response = await saveGenres(trueGenres);
-    console.log(response.data);
+    const response = await saveGenres(trueGenres);
+    console.log(response);
+    history.push('/calculatebooks');
   };
 
   const useStyles = makeStyles(theme => ({

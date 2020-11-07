@@ -16,13 +16,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <PrivateRoute path="/" component={HomePage} exact/>
-          <PrivateRoute path="/calculatebooks" component={CalculateBooks}  exact/>
-          <PrivateRoute path="/subjects" component={Subjects} exact/>
-          <PrivateRoute path="/genres" component={Genres} exact/>
-          <PrivateRoute path="/welcome" component={WelcomeView} exact/>
-          <PublicRoute restricted={true} path="/register" component={Register} exact/>
-          <PublicRoute restricted={true} path="/login" component={Login} exact/>
+          <PrivateRoute restricted={false} path="/" component={HomePage} exact/>
+          <PrivateRoute restricted={true} path="/calculatebooks" component={CalculateBooks}  exact/>
+          <PrivateRoute restricted={true} path="/subjects" component={Subjects} exact/>
+          <PrivateRoute restricted={true} path="/genres" component={Genres} exact/>
+          <PrivateRoute restricted={true} path="/welcome" component={WelcomeView} exact/>
+          <PublicRoute path="/register" component={Register} exact/>
+          <PublicRoute path="/login" component={Login} exact/>
         </Switch>
       </Router>
     </div>
