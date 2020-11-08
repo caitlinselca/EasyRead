@@ -15,6 +15,59 @@
   justify-content: center;
 }
 
+.root {
+  background-color: burlywood;
+  border-radius: 10px;
+  padding-left: 4%;
+  padding-top: 2%;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* margin: auto;
+  justify-items: center; */
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.books {
+  padding-right: 4%;
+  margin: auto;
+  justify-items: center;
+  align-items: center;
+  align-content: flex-end;
+  padding-bottom: 3%;
+  border-radius: 10px;
+  /* background-color: aliceblue; */
+
+}
+
+.image {
+  border-radius: 10px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+  font-style: oblique;
+  padding-top: 2%;
+  /* background-color: white; */
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* background-color: white; */
+}
+
 .EasyReadIntro{
   color: white;
   font: bold;
