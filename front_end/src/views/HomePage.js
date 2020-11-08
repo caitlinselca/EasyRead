@@ -31,6 +31,25 @@ class HomePage extends React.Component {
   //   //cover: cover_id
   // });
 
+  // constructor(props) {
+  //   super(props);
+
+  //   this.state = {books: []}
+  // }
+
+  // async componentDidMount() {
+  //   let response = await getBooks();
+  //   let booklist = response.map(book => ({
+  //         title: book.title,
+  //         author: book.authors[0].name,
+  //         cover: book.cover_id
+  //     }));
+
+  //   this.setState({books: booklist});
+  //   console.log(this.state.books);
+
+  // }
+
   constructor(props) {
     super(props);
 
@@ -38,32 +57,29 @@ class HomePage extends React.Component {
   }
 
   async componentDidMount() {
+    
     let response = await getBooks();
-    let booklist = response.map(book => ({
+    let booklist = [];
+    console.log("Response: ", response);
+      
+    for(let genres of response){
+      console.log()
+      genres.works.forEach(book => (
+        booklist.push(
+        JSON.stringify({
           title: book.title,
           author: book.authors[0].name,
           cover: book.cover_id
-      }));
+        })  
+      )));
+    }
 
-    this.setState({books: booklist});
-    console.log(this.state.books);
+    booklist = new Set(booklist);
+
+    this.setState({books: Array.from(booklist).map(JSON.parse)});
+    console.log("State:", this.state.books);
 
   }
-
-  // const useStyles = makeStyles(theme => ({
-  //   textField: {
-  //     width: "100%",
-  //     marginTop: "1%"
-  //   },
-  //   button: {
-  //     width: "50%",
-  //     display: "flex",
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //     marginLeft: "25%",
-  //     marginTop: ".5%"
-  //   }
-  // }));
 
 render(){
   return (
