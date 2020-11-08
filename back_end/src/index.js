@@ -14,7 +14,8 @@ const app = express();
 mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   }, () => {
     console.log("Connected to db");
   }

@@ -4,8 +4,8 @@ import "./CalculateBooks.css";
 const CalculateBooksView = props => {
 
   setTimeout(() => {
-    window.location.href = "/HomePage"
-  }, 10000); // 1000 = 1 second, we can change it to any specific time.
+    window.location.href = "/"
+  }, 30000); // 1000 = 1 second, we can change it to any specific time.
 
   return (
     
