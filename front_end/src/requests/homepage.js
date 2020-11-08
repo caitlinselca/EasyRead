@@ -5,7 +5,8 @@ export default async function getBooks(){
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                 trueGenres: ['history'],
+                 trueGenres: ['horror'],
+                //  trueGenres: ['horror', 'thriller'],
                  amount: 10
             }
         );

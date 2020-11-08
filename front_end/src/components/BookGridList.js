@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Card, CardMedia, CardActionArea, CardContent, Typography } from '@material-ui/core/';
 import tileData from '../static/tileData';
 
-const BookGridList = props => {
-
+const BookGridList = ({props, books}) => {
+    console.log(books);
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
@@ -22,8 +22,10 @@ const BookGridList = props => {
     }));
     
     const classes = useStyles();
-
-    const renderBooks = (tileData.map((tile) => (
+    let renderBooks;
+    if(books === undefined)
+    {
+    renderBooks = (tileData.map((tile) => (
             <Grid item>
                 <Card className={classes.card}><CardActionArea>
                     <CardMedia
@@ -39,6 +41,13 @@ const BookGridList = props => {
             </Grid>
         ))
     )
+    }
+
+    else
+    {
+        renderBooks = <div>Books Loaded</div>
+    }
+
 
   return (
     <Grid container className={classes.root} spacing={3}>
