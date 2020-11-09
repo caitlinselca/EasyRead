@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-// import isEmpty from "is-empty";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import login from "../requests/login";
-import "./Login.css";
+import { login }from "../utils/login";
 import Cookies from 'universal-cookie';
+import "./Login.css";
 
 const cookies = new Cookies();
 
@@ -16,10 +15,16 @@ const LoginView = props => {
     password: ""
   });
 
+  const history = useHistory();
+
   const loginUser = async event => {
     event.preventDefault();
-    let response = await login(state); 
-    cookies.set('accessToken', response.accessToken, { path: '/' });
+    let response = await login(state);
+    if(response.status == 200){
+      cookies.set('accessToken', response.data.accessToken, { path: '/' });
+      history.push('/welcome');
+    }
+    console.log(response);
   };
 
   const handleChange = event => {

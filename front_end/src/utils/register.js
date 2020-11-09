@@ -10,8 +10,8 @@ export default async function register(user){
                 password: user.password
             }
         );
-        return response.data;
+        return response;
     }catch(err){
-        return err;
+        if(err.response) return err.response;
     }
 }

@@ -2,10 +2,14 @@ import React, {  } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import "./Welcome.css";
 
 
 const WelcomeView = props => {
+
+    const history = useHistory();
+
     const useStyles = makeStyles(theme => ({
         button: {
             width: "40%",
@@ -37,7 +41,7 @@ const WelcomeView = props => {
                 <br></br>
                 <br></br>
                 <Router>
-                <Button className={classes.button} type="submit" variant="contained" href="/genres">
+                <Button className={classes.button} type="submit" variant="contained" onClick={()=>{history.push('/genres')}}>
                     Let's Try This!
                 </Button>
                 </Router>

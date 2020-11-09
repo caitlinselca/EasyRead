@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./HomePage.css";
 import Cookies from 'universal-cookie';
-import getBooks from '../requests/homepage';
+import getBooks from '../utils/homepage';
+import { getGenres } from '../utils/genrespage'; 
 import NavigationBar from '../components/NavigationBar'
-import BookGridList from '../components/BookGridList'
+// import BookGridList from '../components/BookGridList'
 import Container from '@material-ui/core/Container'
 // import { makeStyles } from '@material-ui/core/styles';
 // import { Grid, Card, CardMedia, CardActionArea, CardContent, Typography } from '@material-ui/core/';
@@ -58,7 +59,11 @@ class HomePage extends React.Component {
 
   async componentDidMount() {
     
-    let response = await getBooks();
+    console.log("I am called");
+    
+    let genres = await getGenres();
+    console.log(genres);
+    let response = await getBooks(genres);
     let booklist = [];
     console.log("Response: ", response);
       

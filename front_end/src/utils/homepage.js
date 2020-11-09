@@ -18,13 +18,13 @@
 
 import axios from 'axios';
 
-export default async function getBooks(){
+export default async function getBooks(genres){
     try{
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                //  trueGenres: ['horror'],
-                 trueGenres: ['horror', 'romance', 'thriller'],
+                 trueGenres: genres,
+                //  trueGenres: [],
                  amount: 10
             }
         );

@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 // import isEmpty from "is-empty";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import register from "../requests/register";
+import register from "../utils/register";
 import "./Register.css";
 
 const RegisterView = props => {
@@ -20,6 +20,7 @@ const RegisterView = props => {
   const registerUser = async event => {
     event.preventDefault();
     let response = await register(state);
+    if(response.status == 201) history.push('/login');
     console.log(response);
   };
 
@@ -115,15 +116,13 @@ const RegisterView = props => {
             className={classes.button}
             type="submit"
             variant="contained"
-            //color="primary"
-            href="/welcome"
           >
             Sign Up
           </Button>
         </div>
         <br></br>
         <div className = "LoginRoute">
-          <Link to="/">Want to login instead?</Link>
+          <Link to="/login">Want to login instead?</Link>
         </div>
       </form>
       </div>

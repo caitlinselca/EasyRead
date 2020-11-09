@@ -19,7 +19,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import booksIcon from '../static/book_pile_icon.svg';
+import { useHistory } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import './NavigationBar.css';
+
+const cookies = new Cookies();
 
 const drawerWidth = 240;
 
@@ -85,6 +89,8 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const history = useHistory();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -92,6 +98,11 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleLogOut = () => {
+    cookies.set('accessToken', null);
+    history.push('/login');
+  }
 
   return (
     <div className={classes.root}>
@@ -114,7 +125,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <Typography variant="h6" style={{ flex:1 }} noWrap>
           </Typography>
-          <Button color="inherit" className="logout" href="/login">Logout</Button>
+          <Button color="inherit" className="logout" onClick={handleLogOut}>Logout</Button>
         </Toolbar>
       </AppBar>
       <Drawer
