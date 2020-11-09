@@ -2,6 +2,7 @@ require('dotenv/config');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path')
 
 // Routes
 const userRoute = require('./routes/user');
@@ -9,6 +10,9 @@ const openLibrary = require('./routes/open_library');
 const testingGoodReads = require('./routes/good_reads_test');
 
 const app = express();
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../front_end/build')));
 
 // Connect to DB
 mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
