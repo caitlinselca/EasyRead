@@ -5,7 +5,7 @@ const CalculateBooksView = props => {
 
   setTimeout(() => {
     window.location.href = "/"
-  }, 5000); // 1000 = 1 second, we can change it to any specific time.
+  }, 6000); // 1000 = 1 second, we can change it to any specific time.
 
   return (
     
