@@ -50,6 +50,19 @@ router.post('/savegenres', authenticateAccessToken, async (req, res) => {
     }
 })
 
+router.get('/getgenres',authenticateAccessToken, async(req, res) => {
+    try{
+        let genres = [];
+        await User.findOne({username: req.user.username}, (err, user) => {
+            genres = user.genres;
+            console.log(genres);
+        });
+        return res.status(200).send(genres);
+    }catch(err){
+        return res.status(400).send(err);
+    }
+})
+
 async function verifyUser(req, res, next){ 
     const user = await User.findOne({username: req.body.username});
     if(user == null) return res.status(400).send('Wrong username or password.');
