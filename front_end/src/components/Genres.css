@@ -22,12 +22,12 @@
     justify-content: center;
   }
   
-  .EasyReadRegisterTitle{
+  .EasyReadGenresTitle{
     margin-bottom: 4%;
     text-shadow: 1.5px 1.5px 1.5px gray;
   }
   
-  .RegisterContainer{
+  .GenresContainer{
     background-color: white;
     height: 550px;
     width: 750px;

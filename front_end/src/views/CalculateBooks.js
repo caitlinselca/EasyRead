@@ -5,7 +5,7 @@ const CalculateBooksView = props => {
 
   setTimeout(() => {
     window.location.href = "/"
-  }, 30000); // 1000 = 1 second, we can change it to any specific time.
+  }, 5000); // 1000 = 1 second, we can change it to any specific time.
 
   return (
     
@@ -16,7 +16,7 @@ const CalculateBooksView = props => {
         <p>
         <h1>Great! Thanks for all the info.</h1>
         <br></br><br></br>
-        <h1>Give us a second while we calculate the best books for you</h1>
+        <h1>Give us a second while we calculate the best books for you!</h1>
         <br></br><br></br>
         <h1>If you’ve made an error or would like different suggestions, we recommend selecting your preferences again.</h1>
         <br></br>
