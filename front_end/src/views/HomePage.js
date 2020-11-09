@@ -15,42 +15,6 @@ const cookies = new Cookies();
 
 class HomePage extends React.Component {
 
-  // const [popularBooks, setBooks] = useState([]);
-  // const [booklist, createBooks] = useState([]);
-  // useEffect(async() => {
-  //   let response = await getBooks();
-  //   let books = response.map(book => ({
-  //     id: book.isbn,
-  //     title: book.title,
-  //     author: book.authors[0].name,
-  //     cover: book.cover_id
-  //   }));
-  //   console.log(books);
-  //   createBooks(books);
-  //   //author: authors -> name
-  //   //title: title
-  //   //cover: cover_id
-  // });
-
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {books: []}
-  // }
-
-  // async componentDidMount() {
-  //   let response = await getBooks();
-  //   let booklist = response.map(book => ({
-  //         title: book.title,
-  //         author: book.authors[0].name,
-  //         cover: book.cover_id
-  //     }));
-
-  //   this.setState({books: booklist});
-  //   console.log(this.state.books);
-
-  // }
-
   constructor(props) {
     super(props);
 

@@ -31,13 +31,13 @@ const WelcomeView = props => {
                 <p>
                 <br></br>
                 <h1>Welcome to Easy Read!</h1>
-                <br></br><br></br>
-                <h2>Our Service is very simple, you select your preferred genre, 
-                combinations of genres, favorite author, age range, topics or subjects.</h2> 
-                <h2>Then we recommend our top three books within those preferred preferences.*</h2> 
-                <h2>For example, you want a horror book that involves drama by Stephen King, we will recommend three of the 
-                best books with those preferences.</h2>
                 <br></br>
+                <h2>Our Service is very simple. All you have to do is select your preferred genres, themes,
+                authors, time periods, places, and age ranges.</h2> 
+                <h2>Then we will recommend books within those preferences.*</h2> 
+                <h2>Want horror books that include plot twists? We will recommend the 
+                best books tailored just for you.</h2>
+                {/* <br></br> */}
                 <br></br>
                 <br></br>
                 <Router>
@@ -45,7 +45,6 @@ const WelcomeView = props => {
                     Let's Try This!
                 </Button>
                 </Router>
-                <br></br>
                 <br></br>
                 <br></br>
                 <br></br>

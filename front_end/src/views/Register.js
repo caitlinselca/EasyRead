@@ -42,10 +42,7 @@ const RegisterView = props => {
 
   return (
     <div className = "Register">
-            <div className="EasyReadTitle">
-        {/* <label>
-            Easy Read
-        </label> */}
+      <div className="EasyReadTitle">
       </div>
     <div className = "RegisterContainer">
       <form onSubmit={registerUser} autoComplete="off">

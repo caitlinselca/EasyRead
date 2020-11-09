@@ -50,28 +50,19 @@ const LoginView = props => {
 
   return (
     <div className="Login">
-      {/* <div className="logincontainer"></div> */}
-      {/* <Paper
-        variant="elevation"
-        elevation={2}
-        className="login-background"
-        > */}
-      <div className="EasyReadTitle">
+      <div className="EasyReadLoginTitle">
         <label>
             Easy Read
         </label>
       </div>
-      <div className="EasyReadIntro">
+      <div className="EasyReadLoginIntro">
         <label>
-            Easy Read is an easy way to find the best books in your preferred reading style. Want a horror that also involves drama? Our system will recommend the best books for you!
+            Finding books has never been easier.
         </label>
       </div>
-      {/* <label>
-          Are you already part of Easy Read?
-      </label> */}
       <div className="LoginContainer">
       <form onSubmit={loginUser} autoComplete="off">
-      <div className = "EasyReadLoginTitle">
+      <div className = "EasyReadLoginQuestion">
       <label>
           Are you already part of Easy Read?
       </label>
@@ -121,7 +112,7 @@ const LoginView = props => {
         </div>
 
         <br></br>
-        <div className = "EasyReadRegisterTitle">
+        <div className = "EasyReadRegisterQuestion">
         <label>
           Not part of Easy Read?
         </label>

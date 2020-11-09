@@ -59,9 +59,9 @@ const GenresView = props => {
     <div className = "Register">
         <div className="EasyReadTitle">
         </div>
-    <div className = "RegisterContainer">
+    <div className = "GenresContainer">
       <form onSubmit={submitGenre} autoComplete="off">
-      <div className = "EasyReadRegisterTitle">
+      <div className = "EasyReadGenresTitle">
       <label>
           Select Your Favorite Genres!
       </label>
