@@ -8,7 +8,8 @@
     "build": "cd front_end && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"nodemon ./back_end/src/index\" \"cd front_end && react-scripts start\""
+    "dev": "concurrently \"nodemon ./back_end/src/index\" \"cd front_end && react-scripts start\"",
+    "postinstall": "(cd back_end && npm install); (cd front_end && npm install);"
   },
   "eslintConfig": {
     "extends": "react-app"
