@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import "./HomePage.css";
 import Cookies from 'universal-cookie';
 import getBooks from '../utils/homepage';
 import { getGenres } from '../utils/genrespage'; 
 import NavigationBar from '../components/NavigationBar'
-// import BookGridList from '../components/BookGridList'
 import Container from '@material-ui/core/Container'
-// import { makeStyles } from '@material-ui/core/styles';
-// import { Grid, Card, CardMedia, CardActionArea, CardContent, Typography } from '@material-ui/core/';
-
-const cookies = new Cookies();
 
 class HomePage extends React.Component {
 
@@ -66,8 +59,6 @@ render(){
             )
           }) }
         </div>
-        {/* <BookGridList books={books}/> */}
-        {/* <img src="http://covers.openlibrary.org/b/id/9277716-M.jpg"></img> */}
       </Container>
     </div>
   );

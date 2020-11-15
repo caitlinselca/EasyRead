@@ -33,18 +33,4 @@ router.post('/genres', async (req, res) => {
     
 })
 
-// router.post('/genres', (req, res) => {
-//     let genre = req.body.trueGenres[0].toLowerCase();
-//     fetch(`http://openlibrary.org/subjects/${genre}.json?limit=${req.body.amount}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data);
-//             res.json({
-//                 selectedGenres: req.body.trueGenres,
-//                 books: data
-//             });
-//         })
-//         .catch(err => res.json(err));
-// })
-
 module.exports = router;

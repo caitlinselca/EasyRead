@@ -50,17 +50,9 @@ router.post('/savegenres', authenticateAccessToken, async (req, res) => {
     }
 })
 
-router.get('/getgenres',authenticateAccessToken, async(req, res) => {
-    try{
-        let genres = [];
-        await User.findOne({username: req.user.username}, (err, user) => {
-            genres = user.genres;
-            console.log(genres);
-        });
+router.get('/getgenres',authenticateAccessToken, (req, res) => {
+        const genres = req.user.genres;
         return res.status(200).send(genres);
-    }catch(err){
-        return res.status(400).send(err);
-    }
 })
 
 async function verifyUser(req, res, next){ 

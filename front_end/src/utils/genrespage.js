@@ -3,20 +3,6 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-async function getBooks(data){
-    try{
-        const response = await axios.post(
-            'http://localhost:3001/openlibrary/genres', 
-            {
-                trueGenres: data
-            }
-        );
-        return response.data;
-    }catch(err){
-        return err;
-    }
-}
-
 async function saveGenres(data){
     try{
         const response = await axios.post(
@@ -53,7 +39,6 @@ async function getGenres(){
 }
 
 export {
-    getBooks,
     saveGenres,
     getGenres
 }

@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
-import { fontFamily } from "@material-ui/system";
-import genres from "../static/genres";
-import { getBooks, saveGenres } from "../utils/genrespage";
+import labels from "../static/labels";
+import { saveGenres } from "../utils/genrespage";
 
 const GenresView = props => {
   const [selectedGenres, setGenres] = useState(new Map());
-  genres.map(genre => selectedGenres.set(genre, false));
+  labels[0].genres.map(genre => selectedGenres.set(genre, false));
 
   const history = useHistory();
 
@@ -68,7 +67,7 @@ const GenresView = props => {
       </div>
         <br></br>
         <div className = "ButtonAlignment">
-          {genres.map((genre) => (
+          {labels[0].genres.map((genre) => (
             <span>
             <Button
               onClick={handleChange}

@@ -1,0 +1,38 @@
+[
+    {
+        "genres": [
+            "Horror",
+            "Thriller",
+            "Romance",
+            "Drama",
+            "Action",
+            "Fantasy",
+            "Comedy",
+            "Mystery",
+            "Sci-Fi",
+            "Fiction",
+            "Non-Fiction",
+            "Educational",
+            "Crime",
+            "Young Adult",
+            "Children's Books"
+        ],
+        "subjects": [
+            "Plot Twist",
+            "Toxic Relationships",
+            "Coming of Age",
+            "Emotional",
+            "Mental Health",
+            "Women",
+            "Crime and Police",
+            "Love",
+            "Travel",
+            "Journey",
+            "LGBTQ+",
+            "Times Bestseller",
+            "Friendships",
+            "School",
+            "Inspirational"
+        ]
+    }
+]
