@@ -24,7 +24,7 @@ const ThemesView = props => {
 
     const response = await saveThemes(themes);
     console.log(response);
-    history.push('/calculatebooks')
+    window.location.href = "/";
   }
 
   

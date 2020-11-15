@@ -76,22 +76,6 @@ async function saveGenres(data){
     }
 }
 
-async function getGenres(){
-    try{
-        const response = await axios.get(
-            'http://localhost:3001/user/getgenres',
-            {
-                headers: {
-                    'Authorization': 'Bearer ' + cookies.get('accessToken')
-                }
-            }
-        );
-        return response.data;
-    }catch(err){
-        return err;
-    }
-}
-
 /************** Themes **************/
 
 async function saveThemes(data){
@@ -138,7 +122,6 @@ export {
     isLogin,
     register,
     saveGenres,
-    getGenres,
     saveThemes,
     getBooks
 }
