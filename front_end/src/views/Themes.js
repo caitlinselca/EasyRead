@@ -2,30 +2,31 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import "./Genres.css";
-import labels from "../static/labels";
-import { saveGenres } from "../utils/labels";
+import "./Themes.css";
+import labels from "../static/labels"
+import { saveThemes } from "../utils/labels"
 
-const GenresView = props => {
-  const [selectedGenres, setGenres] = useState(new Map());
-  labels[0].genres.map(genre => selectedGenres.set(genre, false));
+
+const ThemesView = props => {
+  const [selectedThemes, setThemes] = useState(new Map());
+  labels[0].themes.map(theme => selectedThemes.set(theme, false));
 
   const history = useHistory();
 
-  const submitGenre = async event => {
+  const submitThemes = async event => {
     event.preventDefault();
 
-    let trueGenres = [];
+    let themes = [];
 
-    for (const [key, value] of selectedGenres.entries()) {
-      if (value) trueGenres.push(key);
+    for(const [key, value] of selectedThemes.entries()){
+      if(value) themes.push(key);
     }
 
-    const response = await saveGenres(trueGenres);
+    const response = await saveThemes(themes);
     console.log(response);
-    history.push('/themes');
-  };
+  }
 
+  
   const useStyles = makeStyles(theme => ({
     unselectedButton: {
       color: "#fff",
@@ -43,42 +44,45 @@ const GenresView = props => {
       width: "100%"
     }
   }));
-
+  
   const classes = useStyles();
-
+  
   const handleChange = event => {
-    let genre = event.currentTarget.value;
-    let selected = selectedGenres.get(genre);
-    setGenres(selectedGenres.set(genre, !selected));
+    let theme = event.currentTarget.value;
+    let selected = selectedThemes.get(theme);
+    setThemes(selectedThemes.set(theme, !selected));
     let newStyles = !selected ? classes.selectedButton : classes.unselectedButton;
     event.currentTarget.className = `MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary ${newStyles}`;
   };
 
   return (
     <div className = "Register">
-        <div className="EasyReadTitle">
-        </div>
-    <div className = "GenresContainer">
-      <form onSubmit={submitGenre} autoComplete="off">
-      <div className = "EasyReadGenresTitle">
+            <div className="EasyReadTitle">
+        {/* <label>
+            Easy Read
+        </label> */}
+      </div>
+    <div className = "RegisterContainer">
+      <form onSubmit={submitThemes} autoComplete="off">
+      <div className = "EasyReadRegisterTitle">
       <label>
-          Select Your Favorite Genres!
+          Select Your Favorite Themes!
       </label>
       </div>
         <br></br>
         <div className = "ButtonAlignment">
-          {labels[0].genres.map((genre) => (
+          {labels[0].themes.map((theme) => (
             <span>
-            <Button
-              onClick={handleChange}
-              className={classes.unselectedButton}
-              variant="contained"
-              color="primary"
-              value={genre}
-            >
-              {genre}
-            </Button>{' '}
-          </span>
+              <Button
+                onClick={handleChange}
+                className={classes.unselectedButton}
+                variant="contained"
+                color="primary"
+                value={theme}
+              >
+                {theme}
+              </Button> {' '}
+            </span>
           ))}
         </div>
         <div className = "EndButton">
@@ -86,7 +90,8 @@ const GenresView = props => {
             className={classes.button2}
             type="submit"
             variant="contained"
-            // href="/subjects"
+            //color="primary"
+            // href="/CalculateBooks"
           >
             Next Page
           </Button>
@@ -97,4 +102,4 @@ const GenresView = props => {
   );
 };
 
-export default GenresView;
+export default ThemesView;

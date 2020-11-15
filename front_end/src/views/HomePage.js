@@ -2,7 +2,7 @@ import React from "react";
 import "./HomePage.css";
 import Cookies from 'universal-cookie';
 import getBooks from '../utils/homepage';
-import { getGenres } from '../utils/genrespage'; 
+import { getGenres } from '../utils/labels'; 
 import NavigationBar from '../components/NavigationBar'
 import Container from '@material-ui/core/Container'
 

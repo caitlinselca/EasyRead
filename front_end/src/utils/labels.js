@@ -38,7 +38,27 @@ async function getGenres(){
     }
 }
 
+async function saveThemes(data){
+    try{
+        const response = await axios.post(
+            'http://localhost:3001/user/savethemes',
+            {
+                themes: data
+            },
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + cookies.get('accessToken')
+                }
+            }
+        );
+        return response;
+    }catch(err){
+        return err;
+    }
+}
+
 export {
     saveGenres,
-    getGenres
+    getGenres,
+    saveThemes
 }

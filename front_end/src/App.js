@@ -5,7 +5,7 @@ import Login from './views/Login'
 import Register from './views/Register'
 import WelcomeView from './views/Welcome'
 import Genres from './views/Genres'
-import Subjects from './views/Subjects'
+import Themes from './views/Themes'
 import CalculateBooks from './views/CalculateBooks'
 import HomePage from './views/HomePage'
 import PrivateRoute from './components/PrivateRoute';
@@ -18,7 +18,7 @@ function App() {
         <Switch>
           <PrivateRoute restricted={false} path="/" component={HomePage} exact/>
           <PrivateRoute restricted={true} path="/calculatebooks" component={CalculateBooks}  exact/>
-          <PrivateRoute restricted={true} path="/subjects" component={Subjects} exact/>
+          <PrivateRoute restricted={true} path="/themes" component={Themes} exact/>
           <PrivateRoute restricted={true} path="/genres" component={Genres} exact/>
           <PrivateRoute restricted={true} path="/welcome" component={WelcomeView} exact/>
           <PublicRoute path="/register" component={Register} exact/>

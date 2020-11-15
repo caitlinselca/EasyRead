@@ -39,11 +39,11 @@ router.get('/islogin', authenticateAccessToken, (req, res) => {
 // Saving genres
 router.post('/savegenres', authenticateAccessToken, async (req, res) => {
     try{
-        await User.findOneAndUpdate(
-            {username: req.user.username},
-            {$set: {genres: req.body.trueGenres}},
-            {new: true}
-        );
+        const data = {
+            username: req.user.username,
+            genres: req.body.trueGenres
+        }
+        await User.saveGenres(data);
         return res.status(200).send('Saved');
     }catch(err){
         return res.status(400).send(err);
@@ -53,6 +53,25 @@ router.post('/savegenres', authenticateAccessToken, async (req, res) => {
 router.get('/getgenres',authenticateAccessToken, (req, res) => {
         const genres = req.user.genres;
         return res.status(200).send(genres);
+})
+
+// Saving themes
+router.post('/savethemes', authenticateAccessToken, async (req, res) => {
+    try{
+        const data = {
+            username: req.user.username,
+            themes: req.body.themes
+        }
+        await User.saveThemes(data);
+        return res.status(200).send('Saved');
+    }catch(err){
+        return res.status(400).send(err);
+    }
+})
+
+router.get('/getthemes',authenticateAccessToken, (req, res) => {
+        const themes = req.user.themes;
+        return res.status(200).send(themes);
 })
 
 async function verifyUser(req, res, next){ 
