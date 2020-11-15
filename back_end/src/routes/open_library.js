@@ -34,19 +34,20 @@ router.post('/genres', utils.authenticateAccessToken, async (req, res) => {
         cover: book.cover_id,
         themes: book.subject
     }));
-
+    
     // Eliminate duplicates
     finalOP = Array.from(new Set(finalOP));
-
-    let filtered = [];
-
-    for(let theme of userThemes){
-        filtered = filtered.concat(finalOP.filter(book => utils.containsTheme(book, theme)));
-    }
+    
+    finalOP = finalOP.filter(book => {
+        for(let theme of userThemes){
+            if(utils.containsTheme(book, theme)) return true;
+        }
+        return false;
+    });
 
     res.json({
         selectedGenres: userGenres,
-        books: filtered
+        books: finalOP
     });
     
 })
