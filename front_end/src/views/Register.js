@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 // import isEmpty from "is-empty";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import register from "../utils/register";
+import { register } from "../utils/utils";
 import "./Register.css";
 
 const RegisterView = props => {

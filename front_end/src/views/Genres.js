@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Genres.css";
 import labels from "../static/labels";
-import { saveGenres } from "../utils/labels";
+import { saveGenres } from "../utils/utils";
 
 const GenresView = props => {
   const [selectedGenres, setGenres] = useState(new Map());

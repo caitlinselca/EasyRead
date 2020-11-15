@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isLogin } from '../utils/login';
+import { isLogin } from '../utils/utils';
 
 const PublicRoute = ({component: Component, ...rest}) => {
     const [isMounted, setMounted] = useState(false);
