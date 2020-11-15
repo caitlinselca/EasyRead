@@ -119,7 +119,7 @@ const RegisterView = props => {
         </div>
         <br></br>
         <div className = "LoginRoute">
-          <Link to="/login">Want to login instead?</Link>
+          <Link onClick={() => {history.push('/login')}}>Want to login instead?</Link>
         </div>
       </form>
       </div>

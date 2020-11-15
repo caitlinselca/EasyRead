@@ -15,28 +15,11 @@ class HomePage extends React.Component {
   async componentDidMount() {
     
     console.log("I am called");
-    
-    let genres = await getGenres();
-    console.log(genres);
-    let response = await getBooks(genres);
-    let booklist = [];
+
+    let response = await getBooks();
     console.log("Response: ", response);
-      
-    for(let genres of response){
-      console.log()
-      genres.works.forEach(book => (
-        booklist.push(
-        JSON.stringify({
-          title: book.title,
-          author: book.authors[0].name,
-          cover: book.cover_id
-        })  
-      )));
-    }
 
-    booklist = new Set(booklist);
-
-    this.setState({books: Array.from(booklist).map(JSON.parse)});
+    this.setState({books: response.books});
     console.log("State:", this.state.books);
 
   }

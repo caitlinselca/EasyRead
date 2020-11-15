@@ -114,16 +114,20 @@ async function saveThemes(data){
 }
 
 /************** Homepage **************/
-async function getBooks(genres){
+async function getBooks(){
     try{
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                 trueGenres: genres,
                  amount: 10
+            },
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + cookies.get('accessToken')
+                }
             }
         );
-        return response.data.books;
+        return response.data;
     }catch(err){
         return err;
     }

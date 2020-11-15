@@ -123,7 +123,7 @@ const LoginView = props => {
           type="submit"
           variant="contained"
             //color="red"
-          href="/register"
+          onClick={() => {history.push('/register')}}
           >
             Sign Up
           </Button>

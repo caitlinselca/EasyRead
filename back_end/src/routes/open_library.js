@@ -1,6 +1,7 @@
 require('dotenv/config');
 const express = require('express');
 const fetch = require('node-fetch');
+const utils = require('./utils')
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -12,23 +13,40 @@ router.get('/', (req, res) => {
         .catch(err => res.json(err));
 });
 
-router.post('/genres', async (req, res) => {
+router.post('/genres', utils.authenticateAccessToken, async (req, res) => {
+    const userGenres = req.user.genres;
+    const userThemes = req.user.themes;
     
     let finalOP = [];
-    
-    for(let genre of req.body.trueGenres){
-        await fetch(`http://openlibrary.org/subjects/${genre.toLowerCase()}.json?limit=10`)
-        .then(response => response.json())
-        .then((data) => {
-            finalOP.push(data);
-            // console.log(finalOP);
-        })
-        .catch(err => res.json(err));    
+
+    for(let genre of userGenres){
+        await fetch(`http://openlibrary.org/subjects/${genre.toLowerCase()}.json?limit=${req.body.amount}`)
+            .then(response => response.json())
+            .then(data => {
+                finalOP = finalOP.concat(data.works);
+            })
+            .catch(err => res.json(err));  
+    }
+
+    finalOP = finalOP.map(book => ({
+        title: book.title,
+        author: book.authors[0].name,
+        cover: book.cover_id,
+        themes: book.subject
+    }));
+
+    // Eliminate duplicates
+    finalOP = Array.from(new Set(finalOP));
+
+    let filtered = [];
+
+    for(let theme of userThemes){
+        filtered = filtered.concat(finalOP.filter(book => utils.containsTheme(book, theme)));
     }
 
     res.json({
-        selectedGenres: req.body.trueGenres,
-        books: finalOP
+        selectedGenres: userGenres,
+        books: filtered
     });
     
 })
