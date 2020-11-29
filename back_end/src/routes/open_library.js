@@ -30,7 +30,7 @@ router.post('/genres', utils.authenticateAccessToken, async (req, res) => {
 
     finalOP = finalOP.map(book => ({
         title: book.title,
-        author: book.authors[0].name,
+        author: book.authors ? '' : book.authers[0].name,
         cover: book.cover_id,
         themes: book.subject
     }));

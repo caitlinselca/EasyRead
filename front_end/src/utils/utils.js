@@ -103,7 +103,7 @@ async function getBooks(){
         const response = await axios.post(
             'http://localhost:3001/openlibrary/genres',
             {
-                 amount: 10
+                 amount: 1000
             },
             {
                 headers: {

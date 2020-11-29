@@ -101,7 +101,7 @@ export default function PersistentDrawerLeft() {
 
   const handleLogOut = () => {
     cookies.set('accessToken', null);
-    history.push('/login');
+    window.location.href = "/login";
   }
 
   return (

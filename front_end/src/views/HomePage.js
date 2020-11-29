@@ -34,7 +34,7 @@ render(){
       <NavigationBar />
       <Container maxWidth="md">
         <div className = "root">
-          {this.state.books.length == 0 ? (<div> No books :( </div>) : this.state.books.map(book => {
+          {this.state.books == null || this.state.books.length == 0 ? (<div> No books :( </div>) : this.state.books.map(book => {
             return(
               <div className = "books">
                 <div className="image"><img src={`http://covers.openlibrary.org/b/id/${book.cover}-M.jpg`}></img></div>
