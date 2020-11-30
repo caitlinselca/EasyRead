@@ -44,7 +44,7 @@ const ThemesView = props => {
     
     const response = await saveThemes(themes);
     console.log(response);
-    window.location.href = "/";
+    history.push('/');
   }
 
   const useStyles = makeStyles(theme => ({
@@ -113,11 +113,11 @@ const ThemesView = props => {
       </div>
         <br></br>
         <Box className={classes.query} width={1}>
-          <div>ORs: | {ors.map(value => (
+          <div>Should have at least one: | {ors.map(value => (
               <span>{value} | </span>
             ))}
           </div>
-          <div>ANDs: | {ands.map(value => (
+          <div>Must have: | {ands.map(value => (
               <span>{value} | </span>
             ))}
           </div>

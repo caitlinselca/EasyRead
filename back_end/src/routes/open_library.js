@@ -41,6 +41,15 @@ router.post('/getBooks', utils.authenticateAccessToken, async (req, res) => {
     // Eliminate duplicates
     finalOP = Array.from(new Set(finalOP));
     
+    // Filter ands
+    finalOP = finalOP.filter(book => {
+        for(let theme of userThemes.ands){
+            if(!utils.containsTheme(book, theme)) return false;
+        }
+        return true;
+    })
+
+    // Filter ors
     finalOP = finalOP.filter(book => {
         for(let theme of userThemes.ors){
             if(utils.containsTheme(book, theme)) return true;
