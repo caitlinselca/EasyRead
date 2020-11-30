@@ -83,7 +83,8 @@ async function saveThemes(data){
         const response = await axios.post(
             'http://localhost:3001/user/savethemes',
             {
-                themes: data
+                ands: data.ands,
+                ors: data.ors
             },
             {
                 headers: {
@@ -101,7 +102,7 @@ async function saveThemes(data){
 async function getBooks(){
     try{
         const response = await axios.post(
-            'http://localhost:3001/openlibrary/genres',
+            'http://localhost:3001/openlibrary/getBooks',
             {
                  amount: 1000
             },

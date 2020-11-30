@@ -1,37 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from '@material-ui/styles';
+import { Box } from '@material-ui/core';
 import "./Themes.css";
 import labels from "../static/labels"
-import { saveThemes } from "../utils/utils"
+import { saveThemes } from '../utils/utils'
 
+const q = {
+  NONE: 0,
+  OR: 1,
+  AND: 2
+}
 
 const ThemesView = props => {
+  const [ors, setORs] = useState([]);
+  const [ands, setANDs] = useState([]);
   const [selectedThemes, setThemes] = useState(new Map());
-  labels[0].themes.map(theme => selectedThemes.set(theme, false));
-
+  
   const history = useHistory();
+  
+  useEffect(() => {
+    labels[0].themes.map(theme => selectedThemes.set(theme, q.NONE));
+  }, [])
 
   const submitThemes = async event => {
     event.preventDefault();
 
-    let themes = [];
+    let themes = {
+      ands: [],
+      ors: []
+    };
 
-    for(const [key, value] of selectedThemes.entries()){
-      if(value) themes.push(key);
+    if(ors.length == 0 && ands.length == 0){
+      for(const [key, value] of selectedThemes.entries()){
+        themes.ors.push(key);
+      }
+    }else{
+      themes.ands = ands;
+      themes.ors = ors;
     }
-
+    
     const response = await saveThemes(themes);
     console.log(response);
     window.location.href = "/";
   }
 
-  
   const useStyles = makeStyles(theme => ({
     unselectedButton: {
       color: "#fff",
-      background: "#3f51b5",
       width: "30%",
       marginTop: "2%"
     },
@@ -43,6 +61,9 @@ const ThemesView = props => {
     },
     button2: {
       width: "100%"
+    },
+    query: {
+      fontSize: 12
     }
   }));
   
@@ -51,10 +72,30 @@ const ThemesView = props => {
   const handleChange = event => {
     let theme = event.currentTarget.value;
     let selected = selectedThemes.get(theme);
-    setThemes(selectedThemes.set(theme, !selected));
-    let newStyles = !selected ? classes.selectedButton : classes.unselectedButton;
-    event.currentTarget.className = `MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary ${newStyles}`;
+    switch(selected){
+      case q.NONE:
+        setThemes(selectedThemes.set(theme, q.OR));
+        break;
+      case q.OR:
+        setThemes(selectedThemes.set(theme, q.AND));
+        break;
+      case q.AND:
+        setThemes(selectedThemes.set(theme, q.NONE));
+        break;
+    }
+    // Update query
+    const themes = getThemes();
+    setORs(Array.from(themes.filter(value => selectedThemes.get(value) == q.OR)));
+    setANDs(Array.from(themes.filter(value => selectedThemes.get(value) == q.AND)));
   };
+
+  const getThemes = () => {
+    let themes = [];
+    for(const [key, value] of selectedThemes.entries()){
+      if(value > q.NONE) themes.push(key);
+    }
+    return themes;
+  }
 
   return (
     <div className = "Register">
@@ -71,12 +112,22 @@ const ThemesView = props => {
       </label>
       </div>
         <br></br>
+        <Box className={classes.query} width={1}>
+          <div>ORs: | {ors.map(value => (
+              <span>{value} | </span>
+            ))}
+          </div>
+          <div>ANDs: | {ands.map(value => (
+              <span>{value} | </span>
+            ))}
+          </div>
+        </Box>
         <div className = "ButtonAlignment">
           {labels[0].themes.map((theme) => (
             <span>
               <Button
                 onClick={handleChange}
-                className={classes.unselectedButton}
+                className={selectedThemes.get(theme) > q.NONE ? classes.selectedButton : classes.unselectedButton}
                 variant="contained"
                 color="primary"
                 value={theme}

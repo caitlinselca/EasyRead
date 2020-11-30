@@ -60,7 +60,8 @@ router.post('/savethemes', utils.authenticateAccessToken, async (req, res) => {
     try{
         const data = {
             username: req.user.username,
-            themes: req.body.themes
+            ands: req.body.ands,
+            ors: req.body.ors
         }
         await User.saveThemes(data);
         return res.status(200).send('Saved');
@@ -70,7 +71,10 @@ router.post('/savethemes', utils.authenticateAccessToken, async (req, res) => {
 })
 
 router.get('/getthemes', utils.authenticateAccessToken, (req, res) => {
-        const themes = req.user.themes;
+        const themes = {
+            ands: req.user.ands,
+            ors: req.user.ors
+        };
         return res.status(200).send(themes);
 })
 

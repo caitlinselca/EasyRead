@@ -13,10 +13,13 @@ router.get('/', (req, res) => {
         .catch(err => res.json(err));
 });
 
-router.post('/genres', utils.authenticateAccessToken, async (req, res) => {
+router.post('/getBooks', utils.authenticateAccessToken, async (req, res) => {
     const userGenres = req.user.genres;
-    const userThemes = req.user.themes;
-    
+    const userThemes = {
+        ands: req.user.ands,
+        ors: req.user.ors
+    }
+
     let finalOP = [];
 
     for(let genre of userGenres){
@@ -39,7 +42,7 @@ router.post('/genres', utils.authenticateAccessToken, async (req, res) => {
     finalOP = Array.from(new Set(finalOP));
     
     finalOP = finalOP.filter(book => {
-        for(let theme of userThemes){
+        for(let theme of userThemes.ors){
             if(utils.containsTheme(book, theme)) return true;
         }
         return false;

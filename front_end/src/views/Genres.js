@@ -21,6 +21,13 @@ const GenresView = props => {
       if (value) trueGenres.push(key);
     }
 
+    // If user chooses to skip, then all themes are automatically chosen
+    if(trueGenres.length == 0){
+      for (const [key, value] of selectedGenres.entries()) {
+        trueGenres.push(key);
+      }
+    }
+
     const response = await saveGenres(trueGenres);
     console.log(response);
     history.push('/themes');

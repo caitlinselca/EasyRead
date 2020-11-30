@@ -19,7 +19,10 @@ const userSchema = mongoose.Schema({
     genres: [{
         type: String
     }],
-    themes: [{
+    ands: [{
+        type: String
+    }],
+    ors: [{
         type: String
     }]
 });
@@ -55,7 +58,11 @@ userSchema.statics = {
         try{
             await this.findOneAndUpdate(
                 {username: data.username},
-                {$set: {themes: data.themes}},
+                {$set: {
+                        ands: data.ands,
+                        ors: data.ors
+                    }
+                },
                 {new: true}
             );
         }catch(err){
