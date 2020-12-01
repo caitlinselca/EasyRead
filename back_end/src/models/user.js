@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
     },
     genres: [{
         type: String
+    }],
+    ands: [{
+        type: String
+    }],
+    ors: [{
+        type: String
     }]
 });
 
@@ -33,6 +39,32 @@ userSchema.statics = {
                 await user.save();
                 return 'saved';
             }
+        }catch(err){
+            return err;
+        }
+    },
+    saveGenres: async function(data){
+        try{
+            await this.findOneAndUpdate(
+                {username: data.username},
+                {$set: {genres: data.genres}},
+                {new: true}
+            );
+        }catch(err){
+            return err;
+        }
+    },
+    saveThemes: async function(data){
+        try{
+            await this.findOneAndUpdate(
+                {username: data.username},
+                {$set: {
+                        ands: data.ands,
+                        ors: data.ors
+                    }
+                },
+                {new: true}
+            );
         }catch(err){
             return err;
         }
