@@ -2,7 +2,9 @@
   "name": "easy-read-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "react-scripts": "^4.0.1"
+  },
   "scripts": {
     "start": "node ./back_end/src/index",
     "build": "cd front_end && react-scripts build",

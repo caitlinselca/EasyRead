@@ -101,6 +101,7 @@ export default function PersistentDrawerLeft() {
 
   const handleLogOut = () => {
     cookies.set('accessToken', null);
+    localStorage.removeItem("cache");
     window.location.href = "/login";
   }
 
@@ -125,7 +126,16 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <Typography variant="h6" style={{ flex:1 }} noWrap>
           </Typography>
-          <Button color="inherit" className="logout" onClick={handleLogOut}>Logout</Button>
+          
+          <div className = "title-header">
+            <div className = "flex-me-up">
+              <img src={booksIcon} style={{ flex:1 }} className="BooksIcon" noWrap/>
+              <div className = "title-header-bar-thingy">Easy Read</div>
+            </div>
+            <Button color="inherit" className="logout" onClick={handleLogOut}>Logout</Button>
+          </div>
+          
+          
         </Toolbar>
       </AppBar>
       <Drawer
@@ -144,6 +154,7 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
+      
         <Divider />
         <List>
           <ListItem button key='Dashboard'>
@@ -155,7 +166,9 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary='Favorites' />
           </ListItem>
         </List>
+        
       </Drawer>
+      
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,

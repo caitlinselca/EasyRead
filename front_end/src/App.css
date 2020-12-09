@@ -1,8 +1,11 @@
 .App {
-  height: 3000px;
   /* background-image: url(./static/books-blur2.jpg); */
-  background-image: url(./static/books2.jpg);
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(./static/books2.jpg);
+
 }
+
 /* 
 .App-logo {
   height: 40vmin;

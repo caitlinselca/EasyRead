@@ -1,3 +1,11 @@
+.Login{
+  /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(./static/books2.jpg); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .Login form {
   margin: 0 auto;
   max-width: 320px;
@@ -11,11 +19,7 @@
   font-size: 75px;
   font-weight: 900;
   padding-top: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-right: 3%;
-  /* margin: auto; */
 }
 
 .EasyReadLoginIntro{

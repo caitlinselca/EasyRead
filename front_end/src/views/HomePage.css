@@ -1,3 +1,8 @@
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+} 
+
 .Login form {
   margin: 0 auto;
   max-width: 320px;
@@ -10,65 +15,114 @@
   font-size: 75px;
   font-weight: 900;
   padding-top: 2%;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
-.centerbutton {
-  text-align: center;
-}
-
-.pagination {
-  display: inline-block;
-}
-
-.pagination button {
-  background-color: white;
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  border: 1px solid #ddd;
-  font-size: 22px;
-}
-
-.pagination button:hover:not(.active) {
+.page-indicator{
+  display: flex;
+  height: 100%;
+  width: 100%;
   background-color: burlywood;
-  color: white;
+  border-radius: 10px 10px 0 0;
+  font-size: 1.3rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: oblique;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  animation-duration: .5s;
+}
+
+
+.page-header-container-flex{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem; 
+}
+
+.result-change-small{
+  font-size: .8rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.change-perpage-btn-layout{
+  border: none;
+  background: none;
+  outline: none;
+  padding: none;
+  margin-left: .2rem;
+}
+.change-perpage-btn-layout:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page-bottom{
+  /* padding-top: 0; */
+  padding-bottom: 2rem;
+  border-radius: 0 0 10px 10px;
 }
 
 .root {
+  height: 100%;
+  width: 100%;
+
+  /* border: 3px solid blue; */
   background-color: burlywood;
-  border-radius: 10px;
-  padding-left: 2%;
-  padding-top: 2%;
-  /* display: flex; */
+  /* padding-left: 2%; */
+  padding: 2% 2% 2% 2%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  animation-duration: .5s;
+
   /* margin: auto;
   justify-items: center; */
   /* align-items: center;
   justify-content: center; */
 }
 
+.fadeIn{
+  animation-name: fadeIn;
+}
+
 .books {
-  padding-right: 4%;
   margin: auto;
   justify-items: center;
   align-items: center;
   align-content: flex-end;
   padding-bottom: 3%;
   border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid red; */
+
+  display: flex;
+  flex-direction: column;
   /* background-color: aliceblue; */
 
 }
 
 .image {
+  display: flex;
+  height: 90%;
+  width: 90%;
   border-radius: 10px;
-  margin: auto;
+  margin: 1rem;
   align-items: center;
-  justify-content: center;
+  justify-content:space-evenly;
   background-color: black;
+  /* border: 1px solid yellow; */
+
+}
+
+.book-cover{
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .title {
@@ -129,4 +183,52 @@
   font-size: 20px;
   font-weight: 800;
   margin: auto;
+}
+
+.centerbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid blue; */
+  padding: .5rem;
+  border-radius: 50px;
+  background-color: burlywood;
+}
+
+.extra-btn-container{
+  display: flex;
+}
+
+.page-btn-layout{
+  background-color: burlywood;
+  border: none;
+  border-radius: 100px;
+  color: black;
+  padding: .7rem 1.2rem;
+  margin: .4rem;
+
+  text-decoration: none;
+  font-size: 1rem;
+  transition: linear;
+  transition: background-color .2s ease-in;
+  transition: color .1s ease-in;
+  outline: none;
+
+}
+.page-btn-layout:hover{
+  cursor: pointer;
+  background-color: rgb(177, 140, 93);
+  color: white;
+  border: none;
 }
