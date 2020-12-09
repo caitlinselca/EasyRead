@@ -9,7 +9,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
     useEffect(() => {
         const getLogin = async () => {
             const response = await isLogin();
-            if(response.status == 200) setLoggedIn(true);
+            if(response.status === 200) setLoggedIn(true);
             setMounted(true);
         }
         getLogin();

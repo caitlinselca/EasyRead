@@ -11,8 +11,11 @@ const testingGoodReads = require('./routes/good_reads_test');
 
 const app = express();
 
+console.log(__dirname);
+console.log(path.join(__dirname, '../../build'));
+
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../front_end/build')));
+app.use(express.static(path.join(__dirname, '../../build')));
 
 // Connect to DB
 mongoose.connect(process.env.TEST_CLUSTER_CONNECT, {
@@ -33,9 +36,15 @@ app.use(cors());
 app.use('/user', userRoute);
 app.use('/openlibrary', openLibrary);
 app.use('/testgoodreads', testingGoodReads);
+
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+  console.log(path.join(__dirname,'../../../build/index.html'));
+  res.sendFile(path.join(__dirname +'../../../build/index.html'));
+});
+
  
-app.listen(3001, () =>
+app.listen(process.env.PORT || 3001, () =>
   console.log('Example app listening on port 3001!'),
 );
-
 

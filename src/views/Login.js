@@ -14,6 +14,10 @@ const LoginView = props => {
     username: "",
     password: ""
   });
+  const [error, setError] = useState({
+    isError:  false,
+    errorMessage: ""
+  }); 
 
   const history = useHistory();
 
@@ -21,10 +25,13 @@ const LoginView = props => {
     event.preventDefault();
     let response = await login(state);
     if(response.status == 200){
+      setError({...error, [false]: [""]});
       cookies.set('accessToken', response.data.accessToken, { path: '/' });
       history.push('/welcome');
     }
-    console.log(response);
+    else{
+      setError({isError: true, errorMessage: response.data});
+    }
   };
 
   const handleChange = event => {
@@ -70,11 +77,6 @@ const LoginView = props => {
         <div>
           <TextField
             value={state.username}
-            // error={
-            //   !isEmpty(props.errors.username) ||
-            //   !isEmpty(props.errors.userNotFound)
-            // }
-            // helperText={props.errors.username || props.errors.userNotFound}
             onChange={handleChange}
             className={classes.textField}
             id="username"
@@ -86,11 +88,6 @@ const LoginView = props => {
         <div>
           <TextField
             value={state.password}
-            // error={
-            //   !isEmpty(props.errors.password) ||
-            //   !isEmpty(props.errors.credentials)
-            // }
-            // helperText={props.errors.password || props.errors.credentials}
             onChange={handleChange}
             className={classes.textField}
             id="password"
@@ -105,7 +102,6 @@ const LoginView = props => {
             className={classes.button}
             type="submit"
             variant="contained"
-            //color="primary"
           >
             Login
           </Button>
@@ -122,7 +118,6 @@ const LoginView = props => {
           className={classes.button}
           type="submit"
           variant="contained"
-            //color="red"
           onClick={() => {history.push('/register')}}
           >
             Sign Up
@@ -130,6 +125,13 @@ const LoginView = props => {
         </div>
       </form>
       </div>
+
+      {error.isError &&
+        <div className = "login-err-banner">
+          {error.errorMessage}
+        </div>
+      }
+
     </div>
   );
 };

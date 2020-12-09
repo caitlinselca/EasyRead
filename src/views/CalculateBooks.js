@@ -13,7 +13,7 @@ const CalculateBooksView = props => {
       <br></br>
       <br></br>
       <div className="CalculateBooksContainer">
-        <p>
+        <div className = "calculate-books-paragraph">
         <h1>Great! Thanks for all the info.</h1>
         <br></br><br></br>
         <h1>Give us a second while we calculate the best books for you!</h1>
@@ -21,11 +21,11 @@ const CalculateBooksView = props => {
         <h1>If you’ve made an error or would like different suggestions, we recommend selecting your preferences again.</h1>
         <br></br>
         
-            <img className="spinninggear" src= {require("../static/Spinner-1s-200px-2.gif")}></img>
+            <img className="spinninggear" src= {require("../static/Spinner-1s-200px-2.gif")} alt="#"></img>
         
         <br></br>
         <br></br>
-        </p>
+        </div>
       </div>
     </div>
   );

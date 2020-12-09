@@ -153,62 +153,72 @@ class HomePage extends React.Component {
     lowerLimit+=1;
     upperLimit+=1;
 
+    console.log(numRange);
+
     for(let i = lowerLimit; i < upperLimit; i++){
       numRange.push(i);
     }
 
     let style={
-      "background-color": "rgb(177, 140, 93)",
+      "backgroundColor": "rgb(177, 140, 93)",
       "color": "white"
     }
-
-    return(
-      <div className="centerbutton">
-        <div className="pagination">
-          {this.state.currentPage !== 1 && <button className="page-btn-layout" value={this.state.currentPage-1}  onClick = {this.handlePageClick}>❮</button>}
-
-          {!this.checkInRange(numRange, 1) && this.checkInRange(numRange, 2)&&
-              <button className="page-btn-layout" value="1" onClick = {this.handlePageClick}>1</button>
-          }
-          
-          {!this.checkInRange(numRange, 2) &&
-            <div className = "extra-btn-container">
-              <button className="page-btn-layout" value="1" onClick = {this.handlePageClick}>1</button>
-              <button className="page-btn-layout" value="2" onClick = {this.handlePageClick}>2</button>
-            </div>
-          }          
-          
-          {lowerLimit - 2 >= 1 && <button className="page-btn-layout" value="...">...</button>}
-
-          {numRange.map((num, key) => {
-            return(
-              <button style={this.state.currentPage== num? style: null} className="page-btn-layout" key={key} value={num} onClick = {this.handlePageClick}>{num}</button>
-            );
-
-          })}
-
-          {this.state.totalPages-1 - upperLimit >= 1 && <button className="page-btn-layout" value="...">...</button>}
-          
-          {!this.checkInRange(numRange, this.state.totalPages-1)&&
-            <div className = "extra-btn-container">
-              <button className="page-btn-layout" value={this.state.totalPages-1} onClick = {this.handlePageClick}>{this.state.totalPages-1}</button>
-              <button className="page-btn-layout" value={this.state.totalPages} onClick = {this.handlePageClick}>{this.state.totalPages}</button>
-            </div>
-          }
-
-          {!this.checkInRange(numRange, this.state.totalPages)&& this.checkInRange(numRange, this.state.totalPages-1)&&
-            <button className="page-btn-layout" value={this.state.totalPages} onClick = {this.handlePageClick}>{this.state.totalPages}</button>          
-          } 
-
-          {this.state.currentPage !== this.state.totalPages && <button className="page-btn-layout" value={this.state.currentPage+1}  onClick = {this.handlePageClick}>❯</button>}
+    if(numRange.length <= 1){
+      return(
+        <div className="centerbutton">
+          <div className="pagination">
+            <button className="page-btn-layout" value="1">1</button>
+          </div>
         </div>
-      </div>
-    );
+      )
+    }
+    else{
+      return(
+        <div className="centerbutton">
+          <div className="pagination">
+            {this.state.currentPage !== 1 && <button className="page-btn-layout" value={this.state.currentPage-1}  onClick = {this.handlePageClick}>❮</button>}
 
+            {!this.checkInRange(numRange, 1) && this.checkInRange(numRange, 2)&&
+                <button className="page-btn-layout" value="1" onClick = {this.handlePageClick}>1</button>
+            }
+            
+            {!this.checkInRange(numRange, 2) &&
+              <div className = "extra-btn-container">
+                <button className="page-btn-layout" value="1" onClick = {this.handlePageClick}>1</button>
+                <button className="page-btn-layout" value="2" onClick = {this.handlePageClick}>2</button>
+              </div>
+            }          
+            
+            {lowerLimit - 2 >= 1 && <button className="page-btn-layout" value="...">...</button>}
+
+            {numRange.map((num, key) => {
+              return(
+                <button style={this.state.currentPage== num? style: null} className="page-btn-layout" key={key} value={num} onClick = {this.handlePageClick}>{num}</button>
+              );
+
+            })}
+
+            {this.state.totalPages-1 - upperLimit >= 1 && <button className="page-btn-layout" value="...">...</button>}
+            
+            {!this.checkInRange(numRange, this.state.totalPages-1)&&
+              <div className = "extra-btn-container">
+                <button className="page-btn-layout" value={this.state.totalPages-1} onClick = {this.handlePageClick}>{this.state.totalPages-1}</button>
+                <button className="page-btn-layout" value={this.state.totalPages} onClick = {this.handlePageClick}>{this.state.totalPages}</button>
+              </div>
+            }
+
+            {!this.checkInRange(numRange, this.state.totalPages)&& this.checkInRange(numRange, this.state.totalPages-1)&&
+              <button className="page-btn-layout" value={this.state.totalPages} onClick = {this.handlePageClick}>{this.state.totalPages}</button>          
+            } 
+
+            {this.state.currentPage !== this.state.totalPages && <button className="page-btn-layout" value={this.state.currentPage+1}  onClick = {this.handlePageClick}>❯</button>}
+          </div>
+        </div>
+      );
+    }
   }
 
   render(){
-    console.log(this.state);
 
     return !this.state.mounted ? (<CalculateBooks />) : (
       <div className="HomePage">
@@ -217,7 +227,7 @@ class HomePage extends React.Component {
           <div className = "page-indicator page-header-container-flex fadeIn">
             <div> Page: {this.state.currentPage}</div>
             <div className = "page-result-total">
-                <div>Showing {this.state.perPage} results</div>
+                <div>Showing {this.state.perPage >= this.state.totalBooks? "all": this.state.perPage} results</div>
                 <div className = "result-change-small">Change
                   <button value="20" className = "change-perpage-btn-layout" onClick={this.handlePerPageChange}> 20 </button>
                   <button value="50" className = "change-perpage-btn-layout" onClick={this.handlePerPageChange}> 50 </button>

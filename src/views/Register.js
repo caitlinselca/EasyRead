@@ -54,8 +54,6 @@ const RegisterView = props => {
         <div>
           <TextField
             value={state.email}
-            // error={!isEmpty(props.errors.email)}
-            // helperText={props.errors.email}
             onChange={handleChange}
             className={classes.textField}
             id="email"
@@ -67,11 +65,6 @@ const RegisterView = props => {
         <div>
           <TextField
             value={state.username}
-            // error={
-            //   !isEmpty(props.errors.registerUsername) ||
-            //   !isEmpty(props.errors.userFound)
-            // }
-            // helperText={props.errors.registerUsername || props.errors.userFound}
             onChange={handleChange}
             className={classes.textField}
             id="username"
@@ -83,8 +76,6 @@ const RegisterView = props => {
         <div>
           <TextField
             value={state.password}
-            // error={!isEmpty(props.errors.registerPassword)}
-            // helperText={props.errors.registerPassword}
             onChange={handleChange}
             className={classes.textField}
             id="password"
@@ -97,8 +88,6 @@ const RegisterView = props => {
         <div>
           <TextField
             value={state.confirmPassword}
-            // error={!isEmpty(props.errors.confirmPassword)}
-            // helperText={props.errors.confirmPassword}
             onChange={handleChange}
             className={classes.textField}
             id="confirmPassword"

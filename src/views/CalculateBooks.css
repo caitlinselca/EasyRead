@@ -30,7 +30,7 @@ h1 {
   text-shadow: 1px 1px 1px gray;
 }
 
-p {
+.calculate-books-paragraph {
   text-align: center;
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;

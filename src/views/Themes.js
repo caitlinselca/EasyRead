@@ -142,7 +142,6 @@ const ThemesView = props => {
             className={classes.button2}
             type="submit"
             variant="contained"
-            //color="primary"
           >
             Next Page
           </Button>

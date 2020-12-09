@@ -10,9 +10,9 @@ const PrivateRoute = ({component: Component, restricted, ...rest}) => {
     useEffect(() => {
         const getLogin = async () => {
             const response = await isLogin();
-            if(response.status == 200){
+            if(response.status === 200){
                 setLoggedIn(true);
-                if(response.data == 'new') setNewUser(true);
+                if(response.data === 'new') setNewUser(true);
             }
             setMounted(true);
         }

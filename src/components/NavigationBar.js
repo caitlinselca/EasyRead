@@ -15,11 +15,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import booksIcon from '../static/book_pile_icon.svg';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import './NavigationBar.css';
 
@@ -89,7 +88,7 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -129,7 +128,7 @@ export default function PersistentDrawerLeft() {
           
           <div className = "title-header">
             <div className = "flex-me-up">
-              <img src={booksIcon} style={{ flex:1 }} className="BooksIcon" noWrap/>
+              <img src={booksIcon} style={{ flex:1 }} className="BooksIcon" alt="#"/>
               <div className = "title-header-bar-thingy">Easy Read</div>
             </div>
             <Button color="inherit" className="logout" onClick={handleLogOut}>Logout</Button>
@@ -148,7 +147,7 @@ export default function PersistentDrawerLeft() {
         }}
       >
         <div className={classes.drawerHeader}>
-          <img src={booksIcon} style={{ flex:1 }} className="BooksIcon" noWrap/>
+          <img src={booksIcon} style={{ flex:1 }} className="BooksIcon" alt="#"/>
           Easy Read
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
