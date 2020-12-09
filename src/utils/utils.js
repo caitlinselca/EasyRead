@@ -8,7 +8,7 @@ const cookies = new Cookies();
 async function login(user){
     try{
         const response = await axios.post( // whatever is returned from backend gets put into this const
-            'http://localhost:3001/user/login', 
+            'http://34.229.161.180/user/login', 
             {
                 username: user.username,
                 password: user.password
@@ -24,7 +24,7 @@ async function isLogin(){
     if(cookies.get('accessToken') == null) return false;
     try{
         const response = await axios.get(
-            'http://localhost:3001/user/islogin',
+            'http://34.229.161.180/user/islogin',
             {
                 headers: {
                     'Authorization': 'Bearer ' + cookies.get('accessToken')
@@ -42,7 +42,7 @@ async function isLogin(){
 async function register(user){
     try{
         const response = await axios.post(
-            'http://localhost:3001/user/register', 
+            'http://34.229.161.180/user/register', 
             {
                 email: user.email,
                 username: user.username,
@@ -60,7 +60,7 @@ async function register(user){
 async function saveGenres(data){
     try{
         const response = await axios.post(
-            'http://localhost:3001/user/savegenres',
+            'http://34.229.161.180/user/savegenres',
             {
                 trueGenres: data
             },
@@ -81,7 +81,7 @@ async function saveGenres(data){
 async function saveThemes(data){
     try{
         const response = await axios.post(
-            'http://localhost:3001/user/savethemes',
+            'http://34.229.161.180/user/savethemes',
             {
                 ands: data.ands,
                 ors: data.ors
@@ -102,7 +102,7 @@ async function saveThemes(data){
 async function getBooks(){
     try{
         const response = await axios.post(
-            'http://localhost:3001/openlibrary/getBooks',
+            'http://34.229.161.180/openlibrary/getBooks',
             {
                  amount: 1000
             },
