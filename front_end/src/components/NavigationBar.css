@@ -1,11 +1,33 @@
 .MuiAppBar-colorPrimary {
     color: #fff;
     background:
-        linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url(../static/seamless-wood-background.jpg);
 }
 
 .BooksIcon{
-    width: 45%;
-    height: 45%;
+    height: 3rem;
+    width: 3rem;
+}
+
+.title-header{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    
+    height: 100%;
+    width: 100%;
+}
+
+.flex-me-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+}
+.title-header-bar-thingy{
+    font-size: 2rem;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+    padding-left: 1rem;
 }
